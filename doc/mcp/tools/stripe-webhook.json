@@ -1,0 +1,7 @@
+{
+  "name": "stripe_webhook",
+  "description": "Raw body; Stripe-Signature header. Handles checkout.session.completed.",
+  "http": { "method": "POST", "path": "/api/webhooks/stripe" },
+  "headers": { "Stripe-Signature": "required" },
+  "implementation": { "routeFile": "src/app/api/webhooks/stripe/route.ts" }
+}

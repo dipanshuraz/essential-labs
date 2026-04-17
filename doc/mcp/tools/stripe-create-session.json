@@ -1,0 +1,14 @@
+{
+  "name": "stripe_create_session",
+  "description": "Creates PENDING order + Stripe Checkout Session; returns redirect url.",
+  "http": { "method": "POST", "path": "/api/stripe/create-checkout-session" },
+  "body": "Same JSON schema as checkout.json (email, items, shipping).",
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "url": { "type": "string", "format": "uri" },
+      "orderId": { "type": "string" }
+    }
+  },
+  "implementation": { "routeFile": "src/app/api/stripe/create-checkout-session/route.ts" }
+}

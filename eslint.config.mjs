@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Vendor / copied Kiddex static assets (not authored TypeScript)
+    "public/kiddex/**",
   ]),
 ]);
 

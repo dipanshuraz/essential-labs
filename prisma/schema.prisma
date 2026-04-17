@@ -1,0 +1,117 @@
+// Panda ❤️ Bamboo — Prisma 7 + SQLite (see prisma.config.ts for DATABASE_URL)
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum UserRole {
+  ADMIN
+  CUSTOMER
+  AFFILIATE
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  CANCELLED
+}
+
+model User {
+  id           String             @id @default(cuid())
+  email        String             @unique
+  passwordHash String
+  name         String?
+  role         UserRole           @default(CUSTOMER)
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
+  affiliate    AffiliateProfile?
+  orders       Order[]
+}
+
+model AffiliateProfile {
+  id                String   @id @default(cuid())
+  userId            String   @unique
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code              String   @unique
+  commissionPercent Float    @default(10)
+  active            Boolean  @default(true)
+  createdAt         DateTime @default(now())
+  orders            Order[]
+}
+
+model Category {
+  id       String    @id @default(cuid())
+  name     String
+  slug     String    @unique
+  products Product[]
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  slug        String      @unique
+  description String
+  priceCents  Int
+  images      String      @default("[]")
+  categoryId  String
+  category    Category    @relation(fields: [categoryId], references: [id])
+  stock       Int         @default(0)
+  featured    Boolean     @default(false)
+  createdAt   DateTime    @default(now())
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id                       String            @id @default(cuid())
+  userId                   String?
+  user                     User?             @relation(fields: [userId], references: [id])
+  email                    String
+  status                   OrderStatus       @default(PENDING)
+  totalCents               Int
+  affiliateId              String?
+  affiliate                AffiliateProfile? @relation(fields: [affiliateId], references: [id])
+  affiliateCommissionCents Int?
+  shippingJson             String            @default("{}")
+  /// Set when Checkout Session is created; webhook completes payment.
+  stripeCheckoutSessionId  String?           @unique
+  paymentProvider          String            @default("demo") // demo | stripe
+  createdAt                DateTime          @default(now())
+  items                    OrderItem[]
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  email     String
+  name      String?
+  message   String
+  createdAt DateTime @default(now())
+}
+
+/// Stripe webhook idempotency (optional)
+model ProcessedStripeEvent {
+  id         String   @id @default(cuid())
+  eventId    String   @unique
+  createdAt  DateTime @default(now())
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  orderId    String
+  order      Order   @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId  String
+  product    Product @relation(fields: [productId], references: [id])
+  quantity   Int
+  priceCents Int
+}

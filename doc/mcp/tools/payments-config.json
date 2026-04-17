@@ -1,0 +1,13 @@
+{
+  "name": "payments_config",
+  "http": { "method": "GET", "path": "/api/payments/config" },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "mode": { "enum": ["demo", "stripe"] },
+      "stripeEnabled": { "type": "boolean" },
+      "publishableKey": { "type": ["string", "null"] }
+    }
+  },
+  "implementation": { "routeFile": "src/app/api/payments/config/route.ts" }
+}

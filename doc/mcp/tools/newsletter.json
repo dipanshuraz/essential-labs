@@ -1,0 +1,10 @@
+{
+  "name": "newsletter",
+  "http": { "method": "POST", "path": "/api/newsletter" },
+  "inputSchema": {
+    "type": "object",
+    "required": ["email"],
+    "properties": { "email": { "type": "string", "format": "email" } }
+  },
+  "implementation": { "routeFile": "src/app/api/newsletter/route.ts" }
+}

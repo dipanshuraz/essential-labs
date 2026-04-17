@@ -1,0 +1,9 @@
+{
+  "name": "order_status",
+  "http": {
+    "method": "GET",
+    "path": "/api/order/status",
+    "query": { "session_id": { "type": "string", "description": "Stripe Checkout Session id" } }
+  },
+  "implementation": { "routeFile": "src/app/api/order/status/route.ts" }
+}

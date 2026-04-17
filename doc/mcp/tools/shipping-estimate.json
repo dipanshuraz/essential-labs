@@ -1,0 +1,9 @@
+{
+  "name": "shipping_estimate",
+  "http": {
+    "method": "GET",
+    "path": "/api/shipping-estimate",
+    "query": { "subtotalCents": { "type": "integer" } }
+  },
+  "implementation": { "routeFile": "src/app/api/shipping-estimate/route.ts" }
+}

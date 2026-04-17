@@ -1,0 +1,8 @@
+/* Small additions on top of Kiddex link tags */
+.page_direction {
+  display: none !important;
+}
+
+.boxed_wrapper {
+  min-height: 100vh;
+}

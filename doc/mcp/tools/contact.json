@@ -1,0 +1,14 @@
+{
+  "name": "contact",
+  "http": { "method": "POST", "path": "/api/contact" },
+  "inputSchema": {
+    "type": "object",
+    "required": ["email", "message"],
+    "properties": {
+      "email": { "type": "string", "format": "email" },
+      "name": { "type": "string" },
+      "message": { "type": "string", "minLength": 10, "maxLength": 5000 }
+    }
+  },
+  "implementation": { "routeFile": "src/app/api/contact/route.ts" }
+}

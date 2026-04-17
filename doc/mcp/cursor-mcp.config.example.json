@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Example fragment for Cursor MCP configuration. Merge into your user mcp.json or Cursor settings — paths are illustrative.",
+  "mcpServers": {
+    "panda-bamboo-context": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "/absolute/path/to/panda-bamboo"
+      ],
+      "env": {}
+    }
+  }
+}

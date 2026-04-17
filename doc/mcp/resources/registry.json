@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Panda Bamboo MCP-style resources",
+  "description": "Logical resource URIs for navigation and agent context. Not served by a live MCP server unless you wire one.",
+  "resources": [
+    {
+      "uri": "project://panda-bamboo/README",
+      "name": "doc/README.md",
+      "description": "Index of documentation folder.",
+      "mimeType": "text/markdown",
+      "path": "doc/README.md"
+    },
+    {
+      "uri": "project://panda-bamboo/FEATURES",
+      "name": "FEATURES.md",
+      "description": "Implemented features list",
+      "mimeType": "text/markdown",
+      "path": "doc/FEATURES.md"
+    },
+    {
+      "uri": "project://panda-bamboo/mcp/instructions",
+      "name": "server-instructions",
+      "description": "Agent/MCP workflow instructions for this repo.",
+      "mimeType": "text/markdown",
+      "path": "doc/mcp/server-instructions.md"
+    },
+    {
+      "uri": "project://panda-bamboo/mcp/context",
+      "name": "project-context",
+      "description": "Stack and route summary for LLMs.",
+      "mimeType": "text/markdown",
+      "path": "doc/mcp/project-context.md"
+    },
+    {
+      "uri": "project://panda-bamboo/prisma/schema",
+      "name": "prisma-schema",
+      "description": "Database schema",
+      "mimeType": "text/plain",
+      "path": "prisma/schema.prisma"
+    },
+    {
+      "uri": "project://panda-bamboo/auth",
+      "name": "next-auth-config",
+      "description": "NextAuth configuration",
+      "mimeType": "text/typescript",
+      "path": "src/auth.ts"
+    }
+  ]
+}

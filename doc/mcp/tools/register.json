@@ -1,0 +1,38 @@
+{
+  "name": "register",
+  "description": "Creates a CUSTOMER user with bcrypt password hash.",
+  "http": {
+    "method": "POST",
+    "path": "/api/register",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "required": ["email", "password"],
+    "properties": {
+      "email": { "type": "string", "format": "email" },
+      "password": { "type": "string", "minLength": 6 },
+      "name": { "type": "string" }
+    }
+  },
+  "outputSchema": {
+    "oneOf": [
+      { "type": "object", "properties": { "ok": { "const": true } } },
+      {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    ]
+  },
+  "errors": {
+    "400": "Invalid input (zod)",
+    "409": "Email already registered"
+  },
+  "implementation": {
+    "routeFile": "src/app/api/register/route.ts"
+  }
+}

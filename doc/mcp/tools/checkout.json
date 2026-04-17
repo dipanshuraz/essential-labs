@@ -1,0 +1,61 @@
+{
+  "name": "checkout",
+  "description": "Creates a PAID order (demo), decrements stock, optional affiliate attribution from cookie pb_ref.",
+  "http": {
+    "method": "POST",
+    "path": "/api/checkout",
+    "headers": {
+      "Content-Type": "application/json",
+      "Cookie": "Optional: pb_ref=<AFFILIATE_CODE>"
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "required": ["email", "items", "shipping"],
+    "properties": {
+      "email": { "type": "string", "format": "email" },
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "required": ["productId", "quantity"],
+          "properties": {
+            "productId": { "type": "string" },
+            "quantity": { "type": "integer", "minimum": 1 }
+          }
+        }
+      },
+      "shipping": {
+        "type": "object",
+        "required": ["name", "line1", "city", "postal", "country"],
+        "properties": {
+          "name": { "type": "string" },
+          "line1": { "type": "string" },
+          "city": { "type": "string" },
+          "postal": { "type": "string" },
+          "country": { "type": "string" }
+        }
+      }
+    }
+  },
+  "outputSchema": {
+    "oneOf": [
+      {
+        "type": "object",
+        "properties": {
+          "ok": { "const": true },
+          "orderId": { "type": "string" }
+        }
+      },
+      {
+        "type": "object",
+        "properties": {
+          "error": { "type": "string" }
+        }
+      }
+    ]
+  },
+  "implementation": {
+    "routeFile": "src/app/api/checkout/route.ts"
+  }
+}

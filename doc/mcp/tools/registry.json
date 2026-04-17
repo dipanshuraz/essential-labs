@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Panda Bamboo HTTP API tool registry",
+  "version": "0.2.0",
+  "baseUrl": "${NEXT_PUBLIC_APP_URL || http://localhost:3000}",
+  "tools": [
+    { "name": "auth_nextauth", "file": "auth.json", "path": "/api/auth/[...nextauth]", "description": "NextAuth handlers" },
+    { "name": "cart_preview", "file": "cart-preview.json", "path": "/api/cart-preview", "description": "Cart line product previews" },
+    { "name": "checkout_demo", "file": "checkout.json", "path": "/api/checkout", "description": "Demo checkout (immediate PAID)" },
+    { "name": "payments_config", "file": "payments-config.json", "path": "/api/payments/config", "description": "Stripe enabled + publishable key" },
+    { "name": "shipping_estimate", "file": "shipping-estimate.json", "path": "/api/shipping-estimate", "description": "Flat + free-threshold quote" },
+    { "name": "stripe_create_session", "file": "stripe-create-session.json", "path": "/api/stripe/create-checkout-session", "description": "Stripe Checkout Session (PENDING order)" },
+    { "name": "stripe_webhook", "file": "stripe-webhook.json", "path": "/api/webhooks/stripe", "description": "Stripe webhook (raw body)" },
+    { "name": "order_status", "file": "order-status.json", "path": "/api/order/status", "description": "Poll order by Checkout session id" },
+    { "name": "register", "file": "register.json", "path": "/api/register", "description": "Customer signup" },
+    { "name": "newsletter", "file": "newsletter.json", "path": "/api/newsletter", "description": "Email subscribe" },
+    { "name": "contact", "file": "contact.json", "path": "/api/contact", "description": "Contact form → DB" }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "Panda Bamboo",
+  "short_name": "PandaBamboo",
+  "description": "Panda ❤️ Bamboo — sustainable clothing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fffdfb",
+  "theme_color": "#e85d75"
+}

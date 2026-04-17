@@ -1,0 +1,4 @@
+/* Minimal root styles — storefront uses Kiddex/Bootstrap; admin uses Tailwind. */
+html {
+  scroll-behavior: smooth;
+}

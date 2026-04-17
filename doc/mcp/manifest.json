@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "panda-bamboo",
+  "version": "0.1.0",
+  "description": "Local discovery manifest for MCP-style tooling (docs, tool descriptors, resources).",
+  "documentation": {
+    "index": "../README.md",
+    "features": "../FEATURES.md",
+    "serverInstructions": "server-instructions.md",
+    "projectContext": "project-context.md",
+    "envReference": "env.reference.md"
+  },
+  "registries": {
+    "tools": "tools/registry.json",
+    "resources": "resources/registry.json"
+  },
+  "editor": {
+    "cursorMcpExample": "cursor-mcp.config.example.json",
+    "note": "Copy MCP server entries into your user Cursor MCP config; adjust absolute paths and package names to match your environment."
+  }
+}

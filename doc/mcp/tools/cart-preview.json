@@ -1,0 +1,47 @@
+{
+  "name": "cart_preview",
+  "description": "Returns product card data for cart UI given product ids.",
+  "http": {
+    "method": "GET",
+    "path": "/api/cart-preview",
+    "query": {
+      "id": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Repeat query param: ?id=prod1&id=prod2"
+      }
+    }
+  },
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Product cuid ids"
+      }
+    }
+  },
+  "outputSchema": {
+    "type": "object",
+    "properties": {
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" },
+            "name": { "type": "string" },
+            "slug": { "type": "string" },
+            "priceCents": { "type": "integer" },
+            "stock": { "type": "integer" },
+            "image": { "type": ["string", "null"] }
+          }
+        }
+      }
+    }
+  },
+  "implementation": {
+    "routeFile": "src/app/api/cart-preview/route.ts"
+  }
+}
