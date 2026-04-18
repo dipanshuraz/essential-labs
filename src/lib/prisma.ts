@@ -1,7 +1,10 @@
 import { PrismaBetterSqlite3 } from "@prisma/adapter-better-sqlite3";
 import { PrismaClient } from "@/generated/prisma/client";
 
-const connectionString = process.env.DATABASE_URL ?? "file:./dev.db";
+/** Keep in sync with `prisma.config.ts` fallback when DATABASE_URL is unset. */
+const DEFAULT_SQLITE_URL = "file:./prisma/.generate-placeholder.db";
+
+const connectionString = process.env.DATABASE_URL?.trim() || DEFAULT_SQLITE_URL;
 
 const adapter = new PrismaBetterSqlite3({ url: connectionString });
 

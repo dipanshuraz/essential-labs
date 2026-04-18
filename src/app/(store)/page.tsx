@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AddToCart } from "@/components/add-to-cart";
+import type { Prisma } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { DUMMY_PRODUCT_IMAGE, formatMoney, parseImages } from "@/lib/format";
 
@@ -8,13 +9,20 @@ export const revalidate = 60;
 
 const ASSET = "/kiddex/assets/images";
 
+type FeaturedRow = Prisma.ProductGetPayload<{ include: { category: true } }>;
+
 export default async function HomePage() {
-  const featured = await prisma.product.findMany({
-    where: { featured: true },
-    include: { category: true },
-    take: 8,
-    orderBy: { createdAt: "desc" },
-  });
+  let featured: FeaturedRow[] = [];
+  try {
+    featured = await prisma.product.findMany({
+      where: { featured: true },
+      include: { category: true },
+      take: 8,
+      orderBy: { createdAt: "desc" },
+    });
+  } catch (e) {
+    console.warn("[HomePage] featured products query failed (run migrations / check DATABASE_URL):", e);
+  }
 
   const slides = [
     {
