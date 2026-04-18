@@ -14,7 +14,7 @@ export function parseImages(json: string): string[] {
   }
 }
 
-/** Kiddex pack asset used when a product has no image URL in the database. */
-export const DUMMY_PRODUCT_IMAGE = "/kiddex/assets/images/shop/shop-14.png";
+/** Placeholder when a product has no image URL in the database. */
+export const DUMMY_PRODUCT_IMAGE = "https://i.pravatar.cc/150";
 
 export const AFFILIATE_COOKIE = "pb_ref";
