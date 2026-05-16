@@ -2,14 +2,24 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import { cloudflarePagesSpa } from "../shared/vite-cloudflare-spa";
+import { kiddexUiAlias } from "../shared/vite-kiddex-ui-alias.mjs";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
+const distDir = path.join(rootDir, "dist");
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cloudflarePagesSpa(distDir)],
   base: "/",
+  build: {
+    outDir: "dist",
+    emptyOutDir: true,
+  },
   resolve: {
-    alias: { "@": path.resolve(rootDir, "src") },
+    alias: [
+      kiddexUiAlias(),
+      { find: "@", replacement: path.resolve(rootDir, "src") },
+    ],
   },
   server: {
     port: 5174,

@@ -1,0 +1,42 @@
+{
+  "name": "kiddex-console",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:admin": "VITE_APP=admin vite",
+    "dev:creators": "VITE_APP=creators vite",
+    "dev:all": "concurrently -k -n admin,creators -c cyan,green \"npm run dev:admin\" \"npm run dev:creators\"",
+    "build": "vite build",
+    "build:admin": "VITE_APP=admin npm run build",
+    "build:creators": "VITE_APP=creators npm run build",
+    "preview": "vite preview",
+    "preview:pages": "npm run build:admin && wrangler pages dev dist",
+    "deploy:admin": "npm run build:admin && wrangler pages deploy dist --project-name=essential-labs-admin",
+    "deploy:creators": "npm run build:creators && wrangler pages deploy dist --project-name=kiddex-creator-affiliate"
+  },
+  "dependencies": {
+    "@kiddex/ui": "file:../packages/kiddex-ui",
+    "@tanstack/react-query": "^5.100.10",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.1",
+    "recharts": "^2.15.0",
+    "zustand": "^5.0.13"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "~5.6.3",
+    "vite": "^6.0.3",
+    "wrangler": "^4.14.0"
+  }
+}

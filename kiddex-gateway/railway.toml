@@ -1,0 +1,9 @@
+# Railway service config. In the dashboard, set Root Directory to: kiddex-apps/kiddex-gateway
+[build]
+builder = "nixpacks"
+
+[deploy]
+startCommand = "npm start"
+healthcheckPath = "/health"
+healthcheckTimeout = 120
+restartPolicyType = "on_failure"

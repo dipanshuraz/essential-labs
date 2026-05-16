@@ -1,15 +1,37 @@
-/* Shell only — template UI/CSS/JS loads inside the iframe from /kiddex/. */
+/* Kiddex storefront uses template CSS from /kiddex/assets — not Tailwind. */
 html,
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
-  overflow: hidden;
 }
 
-.kiddex-frame {
+/* Fallback if legacy preloader markup is still present */
+html.kiddex-ready .loader-wrap {
+  display: none !important;
+}
+
+/* Account hub tab links inside Kiddex template buttons */
+.account-section .tab-btns .tab-btn a {
+  color: inherit;
+  text-decoration: none;
   display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
+}
+
+.kiddex-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  border-radius: 9px;
+  background: var(--theme-color, #ff6b6b);
+  color: #fff;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+}
+
+.option-list li {
+  position: relative;
 }

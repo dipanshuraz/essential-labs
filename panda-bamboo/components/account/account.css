@@ -1,0 +1,273 @@
+/* Kiddex shopper account — matches storefront theme (--theme-color #F76188) */
+.kx-account {
+  --kx-theme: #f76188;
+  --kx-theme-dark: #e04d74;
+  --kx-theme-soft: #fff0f4;
+  --kx-ink: #1a1d1f;
+  --kx-muted: #6f767e;
+  --kx-border: #e8e8e8;
+  --kx-bg: #f1f3f6;
+  font-family: Nunito, system-ui, sans-serif;
+  color: var(--kx-ink);
+  background: var(--kx-bg);
+  min-height: 100vh;
+}
+
+.kx-account a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.kx-account__top {
+  background: #fff;
+  border-bottom: 1px solid var(--kx-border);
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kx-account__logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: var(--kx-theme);
+}
+
+.kx-account__logo span {
+  color: var(--kx-ink);
+}
+
+.kx-account__shop-link {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--kx-theme);
+}
+
+.kx-account__layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .kx-account__layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.kx-account__sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.kx-account__card {
+  background: #fff;
+  border: 1px solid var(--kx-border);
+  border-radius: 4px;
+}
+
+.kx-account__profile-chip {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.kx-account__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ffe566;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: var(--kx-ink);
+}
+
+.kx-account__nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1rem;
+  font-size: 0.875rem;
+  border-top: 1px solid var(--kx-border);
+  transition: background 0.15s;
+}
+
+.kx-account__nav-item:hover {
+  background: #fafafa;
+}
+
+.kx-account__nav-item.is-active {
+  background: var(--kx-theme-soft);
+  color: var(--kx-theme);
+  font-weight: 600;
+}
+
+.kx-account__section-label {
+  padding: 0.65rem 1rem 0.25rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--kx-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.kx-account__main {
+  min-width: 0;
+}
+
+.kx-account__panel {
+  background: #fff;
+  border: 1px solid var(--kx-border);
+  border-radius: 4px;
+  padding: 1.5rem;
+}
+
+.kx-account__panel h1 {
+  margin: 0 0 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.kx-account__breadcrumb {
+  font-size: 0.75rem;
+  color: var(--kx-muted);
+  margin-bottom: 1rem;
+}
+
+.kx-account__breadcrumb a:hover {
+  color: var(--kx-theme);
+}
+
+.kx-account__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: var(--kx-theme);
+  color: #fff;
+}
+
+.kx-account__btn:hover {
+  background: var(--kx-theme-dark);
+}
+
+.kx-account__btn--outline {
+  background: #fff;
+  color: var(--kx-theme);
+  border: 1px solid var(--kx-theme);
+}
+
+.kx-account__field {
+  margin-bottom: 1rem;
+}
+
+.kx-account__field label {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--kx-muted);
+  margin-bottom: 0.35rem;
+}
+
+.kx-account__input {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--kx-border);
+  border-radius: 2px;
+  font: inherit;
+}
+
+.kx-account__order-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--kx-border);
+  align-items: center;
+}
+
+.kx-account__order-row img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  border: 1px solid var(--kx-border);
+  border-radius: 4px;
+}
+
+.kx-account__status--ok {
+  color: #21c45d;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.kx-account__coupon {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--kx-border);
+}
+
+.kx-account__coupon h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #2e7d32;
+}
+
+.kx-account__empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--kx-muted);
+}
+
+.kx-account__coins-hero {
+  background: linear-gradient(135deg, #fff8e1, #fff);
+  border: 1px solid #ffe082;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.kx-account__plus-banner {
+  background: linear-gradient(180deg, #f5e6c8, #fff);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.kx-account__filters {
+  background: #fff;
+  border: 1px solid var(--kx-border);
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.kx-account__filters h4 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.kx-account__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  margin-bottom: 0.35rem;
+}

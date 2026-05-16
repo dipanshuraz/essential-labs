@@ -45,7 +45,33 @@ Toggle with the **sun/moon** control in the top bar (or on the login screen, top
 npm run build
 ```
 
-Output: `dist/` — upload or connect CI to your host.
+Output: `dist/` — static SPA (`index.html` + hashed assets). Client routes use React Router; `_redirects` and `404.html` are included for hosts like **Cloudflare Pages**.
+
+## Deploy to Cloudflare Pages
+
+**Dashboard (recommended):** Create a Pages project → connect Git → set:
+
+| Setting | Value |
+|---------|--------|
+| Root directory | `kiddex-apps/essential-labs-admin` |
+| Build command | `npm ci && npm run build` |
+| Build output | `dist` |
+
+Add environment variables from `.env.example` (e.g. `VITE_STOREFRONT_URL`).
+
+**CLI:**
+
+```bash
+npm install
+npm run deploy:pages
+# first time: npx wrangler login
+```
+
+Local preview of the production bundle on Cloudflare’s dev server:
+
+```bash
+npm run preview:pages
+```
 
 ## Screens / routes
 

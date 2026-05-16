@@ -4,9 +4,13 @@
   "version": "0.1.0",
   "description": "API gateway stub (Express) — extend with routes that proxy to domain microservices.",
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "node --watch src/server.mjs",
-    "start": "node src/server.mjs"
+    "start": "node src/server.mjs",
+    "test": "node --test src/auth/auth.test.mjs"
   },
   "dependencies": {
     "cors": "^2.8.5",

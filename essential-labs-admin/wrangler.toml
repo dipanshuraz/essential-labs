@@ -1,0 +1,5 @@
+# Cloudflare Pages — connect this folder as the project root in the dashboard,
+# or deploy with: npm run deploy:pages
+name = "essential-labs-admin"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "dist"

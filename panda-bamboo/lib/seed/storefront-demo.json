@@ -1,0 +1,185 @@
+{
+  "supercoinBalance": 520,
+  "cartPreview": [
+    {
+      "productId": "kw-02",
+      "title": "Girls Floral Midi Dress — Party Collection",
+      "image": "/kiddex/assets/images/shop/shop-2.png",
+      "price": 899,
+      "qty": 1
+    },
+    {
+      "productId": "kw-05",
+      "title": "Kids Lightweight Running Sneakers — Neon Flex",
+      "image": "/kiddex/assets/images/shop/shop-5.png",
+      "price": 1599,
+      "qty": 1
+    },
+    {
+      "productId": "kw-20",
+      "title": "Kids Cotton Ankle Socks — 6 Pair Pack",
+      "image": "/kiddex/assets/images/shop/shop-20.png",
+      "price": 299,
+      "qty": 2
+    }
+  ],
+  "orders": [
+    {
+      "id": "oi-kw-1",
+      "productId": "kw-01",
+      "orderId": "KX20260516001",
+      "title": "Organic Cotton Romper — Little Bears (0–6M)",
+      "image": "/kiddex/assets/images/shop/shop-1.png",
+      "price": 499,
+      "status": "delivered",
+      "deliveredOn": "May 12, 2026",
+      "seller": "Kiddex Kidswear",
+      "earnedCoins": 10,
+      "size": "3-6M"
+    },
+    {
+      "id": "oi-kw-2",
+      "productId": "kw-02",
+      "orderId": "KX20260510002",
+      "title": "Girls Floral Midi Dress — Party Collection",
+      "image": "/kiddex/assets/images/shop/shop-2.png",
+      "price": 899,
+      "status": "delivered",
+      "deliveredOn": "May 10, 2026",
+      "seller": "Kiddex Kidswear",
+      "earnedCoins": 18,
+      "size": "6-7Y"
+    },
+    {
+      "id": "oi-kw-3",
+      "productId": "kw-03",
+      "orderId": "KX20260514003",
+      "title": "Boys Classic Denim Jacket — Stretch Fit",
+      "image": "/kiddex/assets/images/shop/shop-3.png",
+      "price": 1299,
+      "status": "on_the_way",
+      "seller": "Kiddex Kidswear",
+      "size": "8-9Y"
+    },
+    {
+      "id": "oi-kw-4",
+      "productId": "kw-05",
+      "orderId": "KX20260508004",
+      "title": "Kids Lightweight Running Sneakers — Neon Flex",
+      "image": "/kiddex/assets/images/shop/shop-5.png",
+      "price": 1599,
+      "status": "delivered",
+      "deliveredOn": "May 8, 2026",
+      "seller": "Kiddex Footwear",
+      "earnedCoins": 32,
+      "size": "UK 12"
+    },
+    {
+      "id": "oi-kw-5",
+      "productId": "kw-04",
+      "orderId": "KX20260428005",
+      "title": "Unisex Hoodie & Jogger Set (2-Piece)",
+      "image": "/kiddex/assets/images/shop/shop-4.png",
+      "price": 1099,
+      "status": "cancelled",
+      "seller": "Kiddex Kidswear",
+      "size": "4-5Y"
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "wl-1",
+      "productId": "kw-10",
+      "title": "Boys Festive Kurta Pyjama Set — Silk Blend",
+      "image": "/kiddex/assets/images/shop/shop-10.png",
+      "price": 1499
+    },
+    {
+      "id": "wl-2",
+      "productId": "kw-11",
+      "title": "Girls Light Lehenga Choli — Festive Pink",
+      "image": "/kiddex/assets/images/shop/shop-11.png",
+      "price": 2199
+    },
+    {
+      "id": "wl-3",
+      "productId": "kw-13",
+      "title": "Thermal Fleece Onesie — Winter Cozy",
+      "image": "/kiddex/assets/images/shop/shop-13.png",
+      "price": 949
+    },
+    {
+      "id": "wl-4",
+      "productId": "kw-17",
+      "title": "Girls Knit Open Cardigan — Pastel",
+      "image": "/kiddex/assets/images/shop/shop-17.png",
+      "price": 849
+    }
+  ],
+  "coupons": [
+    {
+      "id": "c-kw-1",
+      "title": "Extra 15% off on Winterwear",
+      "description": "Valid on hoodies, thermals & fleece — min cart ₹999",
+      "validTill": "Valid till 31 May, 2026"
+    },
+    {
+      "id": "c-kw-2",
+      "title": "₹200 off on Footwear",
+      "description": "Applies to kids shoes & sandals above ₹1,299",
+      "validTill": "Valid till 25 May, 2026"
+    },
+    {
+      "id": "c-kw-3",
+      "title": "Newborn essentials at ₹399",
+      "description": "Select rompers & bodysuits — one per order",
+      "validTill": "Valid till 20 May, 2026"
+    },
+    {
+      "id": "c-kw-4",
+      "title": "Free shipping weekend",
+      "description": "All kidswear orders — no minimum",
+      "validTill": "Valid till 18 May, 2026"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "n1",
+      "title": "Your denim jacket is on the way",
+      "body": "Boys Classic Denim Jacket ships today. Track order KX20260514003.",
+      "when": "2 hours ago"
+    },
+    {
+      "id": "n2",
+      "title": "Winterwear sale is live",
+      "body": "Extra 15% off hoodies & thermals with code WINTER15.",
+      "when": "Yesterday"
+    },
+    {
+      "id": "n3",
+      "title": "You earned 32 Kiddex Coins",
+      "body": "From your sneaker order KX20260508004.",
+      "when": "May 8, 2026"
+    }
+  ],
+  "addresses": [
+    {
+      "id": "a1",
+      "type": "HOME",
+      "name": "Deepanshu Prajapati",
+      "phone": "+91 98765 43210",
+      "lines": "Flat 402, Green Park Residency, Sector 45, Gurugram, Haryana 122003"
+    },
+    {
+      "id": "a2",
+      "type": "WORK",
+      "name": "Deepanshu Prajapati",
+      "phone": "+91 98765 43211",
+      "lines": "Kiddex HQ, 5th Floor, Indiranagar, Bengaluru, Karnataka 560038"
+    }
+  ],
+  "savedCards": [
+    { "id": "card1", "label": "Kiddex Rewards Credit Card", "last4": "1356" },
+    { "id": "card2", "label": "HDFC Debit Card", "last4": "8821" }
+  ]
+}

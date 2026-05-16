@@ -14,7 +14,7 @@ function patchFile(file) {
   const fp = path.join(root, file);
   let html = fs.readFileSync(fp, "utf8");
   if (html.includes('<base href="/kiddex/">')) return "skip";
-  const next = html.replace(/<head([^>]*)>/i, `<head$1>\n\t${SNIPPET}\n`);
+  const next = html.replace(/<head([^>]*)>/i, `<head$1>\n\t${SNIPPET}`);
   if (next === html) {
     console.warn("no <head> match:", file);
     return "fail";

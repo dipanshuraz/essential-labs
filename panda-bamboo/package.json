@@ -4,26 +4,37 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "dev:clean": "rm -rf .next && npm run dev",
     "build": "next build --turbopack",
     "start": "next start",
     "lint": "eslint",
-    "fix-kiddex-base": "node scripts/inject-kiddex-base.mjs",
-    "verify:kiddex": "node scripts/verify-kiddex-routes.mjs"
+    "sync-kiddex-assets": "node scripts/sync-kiddex-from-source.mjs",
+    "sync-kiddex-html": "node scripts/sync-kiddex-html.mjs",
+    "sync-kiddex": "npm run sync-kiddex-assets && npm run sync-kiddex-html",
+    "prebuild": "npm run sync-kiddex",
+    "manifest:kiddex": "node scripts/generate-kiddex-manifest.mjs",
+    "seed:kidswear": "node ../shared/scripts/seed-kidswear-content.mjs",
+    "verify:store": "npm run build",
+    "test:e2e": "playwright test",
+    "test:e2e:kiddex": "playwright test e2e/kiddex-pages.spec.ts"
   },
   "dependencies": {
+    "clsx": "^2.1.1",
+    "next": "15.5.18",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.18"
+    "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@playwright/test": "^1.60.0",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
     "eslint": "^9",
     "eslint-config-next": "15.5.18",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

@@ -1,0 +1,137 @@
+[
+  {
+    "html": "about.html",
+    "slug": "about",
+    "route": "/about"
+  },
+  {
+    "html": "account.html",
+    "slug": "account",
+    "route": "/account"
+  },
+  {
+    "html": "blog-2.html",
+    "slug": "blog-2",
+    "route": "/blog-2"
+  },
+  {
+    "html": "blog-details.html",
+    "slug": "blog-details",
+    "route": "/blog-details"
+  },
+  {
+    "html": "blog.html",
+    "slug": "blog",
+    "route": "/blog"
+  },
+  {
+    "html": "cart.html",
+    "slug": "cart",
+    "route": "/cart"
+  },
+  {
+    "html": "checkout.html",
+    "slug": "checkout",
+    "route": "/checkout"
+  },
+  {
+    "html": "contact.html",
+    "slug": "contact",
+    "route": "/contact"
+  },
+  {
+    "html": "error.html",
+    "slug": "error",
+    "route": "/error"
+  },
+  {
+    "html": "index-2.html",
+    "slug": "index-2",
+    "route": "/index-2"
+  },
+  {
+    "html": "index-3.html",
+    "slug": "index-3",
+    "route": "/index-3"
+  },
+  {
+    "html": "index-4.html",
+    "slug": "index-4",
+    "route": "/index-4"
+  },
+  {
+    "html": "index-5.html",
+    "slug": "index-5",
+    "route": "/index-5"
+  },
+  {
+    "html": "index.html",
+    "slug": "home",
+    "route": "/"
+  },
+  {
+    "html": "login.html",
+    "slug": "login",
+    "route": "/login"
+  },
+  {
+    "html": "search.html",
+    "slug": "search",
+    "route": "/search"
+  },
+  {
+    "html": "shop-2.html",
+    "slug": "shop-2",
+    "route": "/shop-2"
+  },
+  {
+    "html": "shop-3.html",
+    "slug": "shop-3",
+    "route": "/shop-3"
+  },
+  {
+    "html": "shop-4.html",
+    "slug": "shop-4",
+    "route": "/shop-4"
+  },
+  {
+    "html": "shop-5.html",
+    "slug": "shop-5",
+    "route": "/shop-5"
+  },
+  {
+    "html": "shop-6.html",
+    "slug": "shop-6",
+    "route": "/shop-6"
+  },
+  {
+    "html": "shop-details-2.html",
+    "slug": "shop-details-2",
+    "route": "/shop-details-2"
+  },
+  {
+    "html": "shop-details-3.html",
+    "slug": "shop-details-3",
+    "route": "/shop-details-3"
+  },
+  {
+    "html": "shop-details-4.html",
+    "slug": "shop-details-4",
+    "route": "/shop-details-4"
+  },
+  {
+    "html": "shop-details.html",
+    "slug": "shop-details",
+    "route": "/shop-details"
+  },
+  {
+    "html": "shop.html",
+    "slug": "shop",
+    "route": "/shop"
+  },
+  {
+    "html": "signup.html",
+    "slug": "signup",
+    "route": "/signup"
+  }
+]

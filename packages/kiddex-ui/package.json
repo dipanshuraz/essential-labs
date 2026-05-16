@@ -1,0 +1,23 @@
+{
+  "name": "@kiddex/ui",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tailwind-preset": "./tailwind-preset.js",
+    "./styles.css": "./src/styles.css"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.2",
+    "react": "^19.0.0",
+    "typescript": "~5.6.3"
+  }
+}

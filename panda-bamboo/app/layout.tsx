@@ -3,11 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Panda Bamboo — Kiddex",
-    template: "%s · Panda Bamboo",
+    default: "Kiddex — Kids Toy Store",
+    template: "%s",
   },
-  description:
-    "1:1 Kiddex HTML template (CSS + jQuery) served from Next.js public/kiddex — same markup, assets, and scripts as the source pack.",
+  description: "The best kids toy store — shop toys, games, and accessories online.",
+  icons: { icon: "/kiddex/assets/images/favicon.ico" },
 };
 
 export const viewport: Viewport = {
@@ -17,14 +17,16 @@ export const viewport: Viewport = {
   userScalable: false,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body suppressHydrationWarning>{children}</body>
     </html>
   );
 }

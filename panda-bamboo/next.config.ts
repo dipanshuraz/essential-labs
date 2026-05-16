@@ -1,35 +1,50 @@
 import type { NextConfig } from "next";
 import fs from "fs";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const kiddexDir = path.join(process.cwd(), "public", "kiddex");
 
+/** Serve original Kiddex HTML at clean URLs (1:1 template UI). */
 function kiddexHtmlRewrites(): { source: string; destination: string }[] {
-  const dir = path.join(__dirname, "public", "kiddex");
-  if (!fs.existsSync(dir)) return [];
+  if (!fs.existsSync(kiddexDir)) return [];
+
   return fs
-    .readdirSync(dir)
+    .readdirSync(kiddexDir)
     .filter((f) => f.endsWith(".html"))
-    .map((f) => ({ source: `/${f}`, destination: `/kiddex/${f}` }));
+    .flatMap((file) => {
+      const destination = `/kiddex/${file}`;
+      const slug = file.replace(/\.html$/i, "");
+      if (slug === "index") {
+        return [{ source: "/", destination }];
+      }
+      return [
+        { source: `/${slug}`, destination },
+        { source: `/${slug}.html`, destination },
+      ];
+    });
 }
 
 const nextConfig: NextConfig = {
   turbopack: {
     root: __dirname,
   },
-  /**
-   * - `/` serves the Kiddex home (internal rewrite).
-   * - `/*.html` at site root forwards to `/kiddex/*.html` (template uses relative `.html` links).
-   * HTML files include `<base href="/kiddex/">` (see `npm run fix-kiddex-base`) so assets work when the URL is `/`.
-   */
+  images: {
+    unoptimized: true,
+  },
+  async redirects() {
+    if (!fs.existsSync(kiddexDir)) return [];
+    return fs
+      .readdirSync(kiddexDir)
+      .filter((f) => f.endsWith(".html"))
+      .map((file) => {
+        const slug = file.replace(/\.html$/i, "");
+        const destination = slug === "index" ? "/" : `/${slug}`;
+        return { source: `/kiddex/${file}`, destination, permanent: true };
+      });
+  },
   async rewrites() {
-    const html = kiddexHtmlRewrites();
     return {
-      beforeFiles: [
-        ...html,
-        { source: "/", destination: "/kiddex/index.html" },
-      ],
+      beforeFiles: kiddexHtmlRewrites(),
     };
   },
 };

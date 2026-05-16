@@ -17,7 +17,12 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "baseUrl": ".",
-    "paths": { "@/*": ["src/*"] }
+    "paths": {
+      "@/*": ["src/*"],
+      "@console/*": ["../kiddex-console/src/*"],
+      "@kiddex/ui": ["../packages/kiddex-ui/src/index.ts"],
+      "@kiddex/ui/*": ["../packages/kiddex-ui/src/*"]
+    }
   },
   "include": ["src"]
 }

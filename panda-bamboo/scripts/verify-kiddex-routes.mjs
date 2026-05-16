@@ -30,19 +30,39 @@ async function main() {
   for (const [label, url] of [
     ["/ (home rewrite)", `${base}/`],
     ["/shop.html (root rewrite)", `${base}/shop.html`],
+    ["/about (extensionless rewrite)", `${base}/about`],
+    ["/about.html (root rewrite)", `${base}/about.html`],
     ["/kiddex/assets/css/style.css", `${base}/kiddex/assets/css/style.css`],
     ["/kiddex/assets/js/jquery.js", `${base}/kiddex/assets/js/jquery.js`],
+    ["/kiddex/assets/images/shape/shape-31.png", `${base}/kiddex/assets/images/shape/shape-31.png`],
   ]) {
     const s = await check(url);
     if (s !== 200) failures.push({ url, s, label });
     console.log(s === 200 ? "✓" : "✗", label, s);
   }
 
+  const aboutRes = await fetch(`${base}/about.html`);
+  const aboutHtml = await aboutRes.text();
+  const aboutSections = [
+    "about-section",
+    "brands-style-two",
+    "testimonial-section about-page",
+    "highlights-section",
+    "news-section",
+    "subscribe-section",
+    "main-footer",
+  ];
+  for (const marker of aboutSections) {
+    const ok = aboutHtml.includes(marker);
+    if (!ok) failures.push({ url: `${base}/about.html`, marker });
+    console.log(ok ? "✓" : "✗", `about.html contains ${marker}`);
+  }
+
   if (failures.length) {
     console.error("\nFailed:", failures);
     process.exit(1);
   }
-  console.log(`\nAll ${files.length + 4} checks passed on port ${port}.`);
+  console.log(`\nAll ${files.length + 7 + aboutSections.length} checks passed on port ${port}.`);
 }
 
 main().catch((e) => {

@@ -4,12 +4,16 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview",
+    "dev": "npm run dev:creators --prefix ../kiddex-console",
+    "build": "npm run build:creators --prefix ../kiddex-console",
+    "build:pages": "npm run build",
+    "preview": "npm run preview --prefix ../kiddex-console",
+    "preview:pages": "npm run preview:pages --prefix ../kiddex-console",
+    "deploy:pages": "npm run deploy:creators --prefix ../kiddex-console",
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@kiddex/ui": "file:../packages/kiddex-ui",
     "@tanstack/react-query": "^5.100.10",
     "lucide-react": "^0.468.0",
     "react": "^19.0.0",
@@ -29,6 +33,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
     "typescript": "~5.6.3",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "wrangler": "^4.14.0"
   }
 }

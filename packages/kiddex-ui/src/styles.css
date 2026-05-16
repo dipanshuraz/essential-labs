@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Shell accent tokens — set via ThemeProvider on <html data-shell="…"> */
+:root,
+[data-shell="admin"] {
+  --kx-accent: #3d8b5c;
+  --kx-accent-rgb: 61 139 92;
+  --kx-accent-hover: #2d6a45;
+  --kx-accent-muted: #e8f5ee;
+  --kx-accent-soft: #f4f9f6;
+  --kx-surface-alt: #f8f9fa;
+  --kx-surface-muted: #f8f9fa;
+}
+
+[data-shell="creators"] {
+  --kx-accent: #6366f1;
+  --kx-accent-rgb: 99 102 241;
+  --kx-accent-hover: #4f46e5;
+  --kx-accent-muted: #eef2ff;
+  --kx-accent-soft: #e0e7ff;
+  --kx-surface-alt: #f9fafb;
+  --kx-surface-muted: #f9fafb;
+}
+
+html {
+  @apply antialiased;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-surface-alt text-ink font-sans transition-colors duration-200 dark:bg-zinc-950 dark:text-zinc-100;
+}
+
+[data-shell="creators"] body {
+  @apply bg-surface-muted;
+}
+
+@layer components {
+  .form-field {
+    @apply mt-1 w-full rounded-xl border border-black/10 bg-white px-3 py-2.5 text-sm text-ink transition-colors;
+    @apply focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent;
+    @apply dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-100;
+    @apply placeholder:text-ink-subtle dark:placeholder:text-zinc-500;
+  }
+
+  .form-search {
+    @apply rounded-full border border-black/10 bg-surface-alt px-4 py-2.5 text-sm text-ink transition-colors;
+    @apply dark:border-white/10 dark:bg-zinc-800 dark:text-zinc-100;
+    @apply placeholder:text-ink-subtle dark:placeholder:text-zinc-500;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-accent-hover;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-sidebar-border bg-white px-4 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-surface-muted dark:border-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800;
+  }
+
+  .trakr-card {
+    @apply rounded-xl border border-sidebar-border bg-white shadow-card dark:border-white/10 dark:bg-zinc-900;
+  }
+
+  .trakr-table-head {
+    @apply border-b border-sidebar-border bg-surface-muted text-left text-xs font-semibold uppercase tracking-wide text-ink-muted dark:border-white/10 dark:bg-zinc-900/80;
+  }
+}
+
+@layer utilities {
+  .dark .text-ink {
+    @apply text-zinc-100;
+  }
+  .dark .text-ink-muted {
+    @apply text-zinc-400;
+  }
+  .dark .text-ink-subtle {
+    @apply text-zinc-500;
+  }
+}
