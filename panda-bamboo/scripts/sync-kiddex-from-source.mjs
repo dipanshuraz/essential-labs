@@ -20,6 +20,14 @@ function copyDir(src, dest) {
 }
 
 if (!fs.existsSync(sourceAssets)) {
+  const hasCommittedAssets =
+    fs.existsSync(destAssets) && fs.readdirSync(destAssets).length > 0;
+  if (hasCommittedAssets) {
+    console.warn(
+      "Kiddex source not found; using committed public/kiddex/assets (OK for Vercel/CI).",
+    );
+    process.exit(0);
+  }
   console.error("Source not found:", sourceAssets);
   process.exit(1);
 }

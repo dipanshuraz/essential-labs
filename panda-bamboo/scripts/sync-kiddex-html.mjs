@@ -39,6 +39,15 @@ function patchHtml(html) {
 
 function main() {
   if (!fs.existsSync(sourceDir)) {
+    const hasCommittedHtml =
+      fs.existsSync(destDir) &&
+      fs.readdirSync(destDir).some((f) => f.endsWith(".html"));
+    if (hasCommittedHtml) {
+      console.warn(
+        "Kiddex HTML source not found; using committed public/kiddex/*.html (OK for Vercel/CI).",
+      );
+      return;
+    }
     console.error("Kiddex source not found:", sourceDir);
     process.exit(1);
   }
