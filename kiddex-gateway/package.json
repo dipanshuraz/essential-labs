@@ -1,0 +1,15 @@
+{
+  "name": "kiddex-gateway",
+  "private": true,
+  "version": "0.1.0",
+  "description": "API gateway stub (Express) — extend with routes that proxy to domain microservices.",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/server.mjs",
+    "start": "node src/server.mjs"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

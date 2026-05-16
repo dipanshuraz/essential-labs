@@ -1,0 +1,19 @@
+{
+  "name": "kiddex-apps",
+  "private": true,
+  "description": "Self-contained workspace: Panda Bamboo storefront, Essential Labs admin, Kiddex Creator Hub",
+  "scripts": {
+    "dev": "concurrently -k -n shop,admin,creators -c cyan,magenta,green \"npm run dev --prefix panda-bamboo\" \"npm run dev --prefix essential-labs-admin\" \"npm run dev --prefix kiddex-creator-affiliate\"",
+    "dev:shop": "npm run dev --prefix panda-bamboo",
+    "dev:admin": "npm run dev --prefix essential-labs-admin",
+    "dev:creators": "npm run dev --prefix kiddex-creator-affiliate",
+    "build:shop": "npm run build --prefix panda-bamboo",
+    "build:admin": "npm run build --prefix essential-labs-admin",
+    "build:creators": "npm run build --prefix kiddex-creator-affiliate",
+    "dev:gateway": "npm run dev --prefix kiddex-gateway",
+    "install:gateway": "npm install --prefix kiddex-gateway"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

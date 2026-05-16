@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply antialiased;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-surface-muted text-ink font-sans transition-colors duration-200 dark:bg-zinc-950 dark:text-zinc-100;
+}
+
+@layer components {
+  .form-field {
+    @apply mt-1 w-full rounded-lg border border-sidebar-border bg-white px-3 py-2.5 text-sm text-ink transition-colors;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary;
+    @apply dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-100;
+    @apply placeholder:text-ink-subtle;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-primary-hover;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-sidebar-border bg-white px-4 py-2.5 text-sm font-semibold text-ink shadow-sm transition-colors hover:bg-surface-muted dark:border-white/10 dark:bg-zinc-900 dark:hover:bg-zinc-800;
+  }
+
+  .trakr-card {
+    @apply rounded-xl border border-sidebar-border bg-white shadow-card dark:border-white/10 dark:bg-zinc-900;
+  }
+
+  .trakr-table-head {
+    @apply border-b border-sidebar-border bg-surface-muted text-left text-xs font-semibold uppercase tracking-wide text-ink-muted dark:border-white/10 dark:bg-zinc-900/80;
+  }
+}
+
+@layer utilities {
+  .dark .text-ink-muted {
+    @apply text-zinc-400;
+  }
+  .dark .text-ink-subtle {
+    @apply text-zinc-500;
+  }
+}

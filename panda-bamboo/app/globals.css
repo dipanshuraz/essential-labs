@@ -1,0 +1,15 @@
+/* Shell only — template UI/CSS/JS loads inside the iframe from /kiddex/. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.kiddex-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
