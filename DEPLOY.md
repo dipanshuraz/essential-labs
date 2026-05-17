@@ -155,6 +155,13 @@ Configured in `essential-labs-admin/src/config/staticAuth.ts`:
 
 Replace with real auth before production.
 
+### Troubleshooting (Cloudflare — admin & affiliate)
+
+| Problem | Fix |
+|---------|-----|
+| `failed to resolve import "lucide-react"` (from `essential-labs-admin`, `kiddex-creator-affiliate`, or `packages/kiddex-ui`) | Push latest `shared/vite-resolve-console-deps.ts`. Root = `kiddex-console`; command = `npm run build:admin` or `npm run build:creators` (not `npm ci &&`). |
+| `npm ci` errors in log | Remove `npm ci &&` from build command — Cloudflare already runs `pnpm install`. |
+
 ---
 
 ## Part 3 — Kiddex Creator Hub on Cloudflare Pages

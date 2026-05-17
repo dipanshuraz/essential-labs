@@ -63,7 +63,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
-      resolveConsoleDeps(rootDir, [adminSrc, creatorsSrc]),
+      resolveConsoleDeps(rootDir),
       dualAppAlias(adminSrc, creatorsSrc),
       shellHtmlMeta(appMode),
       react(),
@@ -88,6 +88,7 @@ export default defineConfig(({ mode }) => {
       ],
     },
     resolve: {
+      dedupe: ["react", "react-dom", "lucide-react"],
       alias: [
         { find: "@console/bootstrap", replacement: bootstrapAlias },
         { find: "@console", replacement: path.resolve(rootDir, "src") },
