@@ -1,7 +1,6 @@
-import "@console/bootstrap";
+import { App } from "@console/bootstrap";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "@console/App";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

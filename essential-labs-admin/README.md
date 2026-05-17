@@ -54,7 +54,7 @@ Output: `dist/` — static SPA (`index.html` + hashed assets). Client routes use
 | Setting | Value |
 |---------|--------|
 | Root directory | `kiddex-apps/essential-labs-admin` |
-| Build command | `npm ci && npm run build` |
+| Build command | `npm run build:admin` |
 | Build output | `dist` |
 
 Add environment variables from `.env.example` (e.g. `VITE_STOREFRONT_URL`).

@@ -78,6 +78,8 @@ npm run build:creators
 
 Vite apps output `dist/` for static hosting. Panda Bamboo: `npm run build --prefix panda-bamboo`, then `npm run start --prefix panda-bamboo`.
 
+**Production deploy (Vercel + Cloudflare Pages):** see [DEPLOY.md](DEPLOY.md).
+
 ## Environment variables
 
 | Variable | Used by | Default |
