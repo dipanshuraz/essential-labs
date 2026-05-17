@@ -1,6 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useState, type ReactNode } from "react";
+import { lazy, Suspense, useState, type ComponentType, type ReactNode } from "react";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -16,13 +15,26 @@ function makeQueryClient() {
   });
 }
 
+const ReactQueryDevtools = import.meta.env.DEV
+  ? lazy(() =>
+      import("@tanstack/react-query-devtools").then((m) => ({
+        default: m.ReactQueryDevtools as ComponentType<{
+          initialIsOpen?: boolean;
+          buttonPosition?: "bottom-left" | "bottom-right" | "top-left" | "top-right";
+        }>,
+      })),
+    )
+  : null;
+
 export function QueryProvider({ children }: { children: ReactNode }) {
   const [client] = useState(makeQueryClient);
   return (
     <QueryClientProvider client={client}>
       {children}
-      {import.meta.env.DEV ? (
-        <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+      {ReactQueryDevtools ? (
+        <Suspense fallback={null}>
+          <ReactQueryDevtools initialIsOpen={false} buttonPosition="bottom-left" />
+        </Suspense>
       ) : null}
     </QueryClientProvider>
   );

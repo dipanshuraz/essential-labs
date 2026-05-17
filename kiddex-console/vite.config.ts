@@ -5,6 +5,7 @@ import react from "@vitejs/plugin-react";
 import { cloudflarePagesSpa } from "../shared/vite-cloudflare-spa";
 import { dualAppAlias } from "../shared/vite-dual-alias";
 import { kiddexUiAlias } from "../shared/vite-kiddex-ui-alias.mjs";
+import { resolveConsoleDeps } from "../shared/vite-resolve-console-deps";
 
 const rootDir = path.dirname(fileURLToPath(import.meta.url));
 const distDir = path.join(rootDir, "dist");
@@ -62,6 +63,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [
+      resolveConsoleDeps(rootDir, [adminSrc, creatorsSrc]),
       dualAppAlias(adminSrc, creatorsSrc),
       shellHtmlMeta(appMode),
       react(),
@@ -76,7 +78,14 @@ export default defineConfig(({ mode }) => {
       emptyOutDir: true,
     },
     optimizeDeps: {
-      include: ["react", "react-dom", "react-router-dom"],
+      include: [
+        "react",
+        "react-dom",
+        "react-router-dom",
+        "lucide-react",
+        "recharts",
+        "@tanstack/react-query",
+      ],
     },
     resolve: {
       alias: [

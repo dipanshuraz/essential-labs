@@ -25,8 +25,8 @@ Create **two** projects, same repo, different root = `kiddex-apps/kiddex-console
 
 | Project | Build command | Output |
 |---------|---------------|--------|
-| Admin | `npm ci && npm run build:admin` | `dist` |
-| Creators | `npm ci && npm run build:creators` | `dist` |
+| Admin | `npm run build:admin` | `dist` |
+| Creators | `npm run build:creators` | `dist` |
 
 ## Legacy folders
 

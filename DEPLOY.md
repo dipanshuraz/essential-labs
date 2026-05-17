@@ -302,3 +302,99 @@ npm run build:creators --prefix kiddex-console
 ```
 
 All three should exit with code `0`.
+
+---
+
+## Part 5 — Local vs production environments
+
+### What deploys where (you deploy **3** things, not 4)
+
+| Deploy? | What | Platform |
+|---------|------|----------|
+| Yes | Panda Bamboo storefront | Vercel |
+| Yes | Essential Labs Admin | Cloudflare Pages (`build:admin`) |
+| Yes | Kiddex Creator / Affiliate (Trakr) | Cloudflare Pages (`build:creators`) |
+| **No** | `kiddex-console` | Build host only — not a separate site |
+| Optional | `kiddex-gateway` | Railway / Render |
+
+**`kiddex-console`** is the shared Vite app that **builds** admin and affiliate. You do **not** create a third Cloudflare project for it. Source code still lives in `essential-labs-admin/` and `kiddex-creator-affiliate/`, but production URLs come from the two Pages projects above.
+
+### Local development (default URLs)
+
+From the repo root:
+
+```bash
+npm install
+npm install --prefix panda-bamboo
+npm install --prefix kiddex-console
+
+# All three frontends
+npm run dev
+```
+
+| App | URL | Command (one app) |
+|-----|-----|-------------------|
+| Storefront | http://localhost:3000 | `npm run dev:shop` |
+| Admin | http://localhost:5173 | `npm run dev:admin` |
+| Affiliate / Creator | http://localhost:5174 | `npm run dev:creators` |
+| Gateway (optional) | http://localhost:4000 | `npm run dev:gateway` |
+
+No `.env` files are required for local demo — defaults point everything at `localhost`.
+
+### Local overrides (optional `.env` files)
+
+Create these only if you need non-default URLs locally:
+
+**Admin** — copy and edit:
+
+```bash
+cp essential-labs-admin/.env.example essential-labs-admin/.env.local
+```
+
+**Affiliate** — copy and edit:
+
+```bash
+cp kiddex-creator-affiliate/.env.example kiddex-creator-affiliate/.env.local
+```
+
+Example `essential-labs-admin/.env.local` (and same for creator):
+
+```env
+VITE_STOREFRONT_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:4000
+```
+
+Restart the dev server after changing `.env.local`.
+
+**Storefront** — optional, only when testing against a remote gateway:
+
+```bash
+# panda-bamboo/.env.local
+NEXT_PUBLIC_GATEWAY_URL=http://localhost:4000
+```
+
+**Gateway** — copy `kiddex-gateway/.env.example` to `kiddex-gateway/.env` for local CORS and port.
+
+### Production environment variables
+
+Set these in each host’s dashboard (not in Git). Vite/Next bake them in at **build** time — redeploy after changes.
+
+| Variable | Where to set | Local default | Production example |
+|----------|--------------|---------------|---------------------|
+| `VITE_STOREFRONT_URL` | Cloudflare Pages (admin + affiliate) | `http://localhost:3000` | `https://your-shop.vercel.app` |
+| `VITE_API_BASE_URL` | Cloudflare Pages (admin + affiliate) | *(unset)* | `https://api.yourdomain.com` |
+| `NEXT_PUBLIC_GATEWAY_URL` | Vercel (Panda Bamboo) | `http://localhost:4000` | `https://api.yourdomain.com` |
+| `CORS_ORIGINS` | Railway / Render (gateway) | *(open in dev)* | `https://admin.pages.dev,https://creators.pages.dev,https://shop.vercel.app` |
+
+### Production URL checklist
+
+Fill in after deploy:
+
+```text
+STOREFRONT (Vercel):     https://________________.vercel.app
+ADMIN (Pages):           https://essential-labs-admin.pages.dev
+AFFILIATE (Pages):       https://kiddex-creator-affiliate.pages.dev
+GATEWAY (optional):      https://________________
+```
+
+Then set `VITE_STOREFRONT_URL` on both Pages projects to the Vercel URL, and gateway URLs when the API is live.
