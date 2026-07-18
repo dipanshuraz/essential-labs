@@ -82,7 +82,7 @@ export function CustomerLoginForm() {
             </div>
           </form>
           <p className="centred" style={{ marginTop: 16, fontSize: 14 }}>
-            Demo (gateway): <strong>{CUSTOMER_LOGIN.email}</strong> /{" "}
+            Demo login (no API required): <strong>{CUSTOMER_LOGIN.email}</strong> /{" "}
             <strong>{CUSTOMER_LOGIN.password}</strong>
           </p>
           <div className="lower-text centred">

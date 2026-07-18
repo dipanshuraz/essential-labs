@@ -53,7 +53,7 @@
 
 .cart-section .cart-table thead{
   position: relative;
-  background: #FDF7F9;
+  background: #F2ECE2;
 }
 
 .cart-section .cart-table thead th{
@@ -299,7 +299,7 @@
   display: block;
   border: 1px dashed #D8D8D8;
   border-radius: 10px;
-  background: #FDF7F9;
+  background: #F2ECE2;
   padding: 30px 40px 40px 40px;
 }
 

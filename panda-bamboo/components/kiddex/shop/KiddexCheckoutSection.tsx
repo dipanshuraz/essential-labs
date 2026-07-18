@@ -18,7 +18,7 @@ export function KiddexCheckoutSection() {
     e.preventDefault();
     setPlaced(true);
     clearCart();
-    window.setTimeout(() => router.push("/account/orders"), 1500);
+    window.setTimeout(() => router.push("/order-confirmation"), 1200);
   }
 
   if (entries.length === 0 && !placed) {
@@ -43,7 +43,7 @@ export function KiddexCheckoutSection() {
           </h2>
         </div>
         {placed ? (
-          <p className="centred">Order placed! Redirecting to your orders…</p>
+          <p className="centred">Order placed! Confirming your order…</p>
         ) : (
           <form onSubmit={onSubmit}>
             <div className="row clearfix">

@@ -1,4 +1,5 @@
 import { KiddexPageTitle } from "@/components/kiddex/layout/KiddexPageTitle";
+import { KiddexSubscribeSection } from "@/components/kiddex/sections/KiddexSubscribeSection";
 import { CONTACT_INFO } from "@/lib/kiddex-site-content";
 import { asset } from "@/lib/assets";
 
@@ -104,6 +105,7 @@ export function KiddexContactPage() {
           </div>
         </div>
       </section>
+      <KiddexSubscribeSection />
     </>
   );
 }

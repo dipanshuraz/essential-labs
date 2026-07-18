@@ -5,6 +5,7 @@ import { KiddexBrandsStyleTwo } from "@/components/kiddex/sections/KiddexBrandsS
 import { KiddexHighlightsStrip } from "@/components/kiddex/sections/KiddexHighlightsStrip";
 import { KiddexNewsSection } from "@/components/kiddex/sections/KiddexNewsSection";
 import { KiddexSlideText } from "@/components/kiddex/sections/KiddexSlideText";
+import { KiddexSubscribeSection } from "@/components/kiddex/sections/KiddexSubscribeSection";
 import { ABOUT_NEWS } from "@/lib/kiddex-site-content";
 
 export function KiddexAboutPage() {
@@ -17,6 +18,7 @@ export function KiddexAboutPage() {
       <KiddexAboutTestimonials />
       <KiddexHighlightsStrip />
       <KiddexNewsSection posts={ABOUT_NEWS} />
+      <KiddexSubscribeSection />
     </>
   );
 }

@@ -17,6 +17,12 @@ import {
   registerCustomer,
 } from "./api";
 import {
+  createDemoSession,
+  DEMO_CUSTOMER_USER,
+  isDemoAccessToken,
+  matchesDemoLogin,
+} from "./staticAuth";
+import {
   clearSession,
   persistSession,
   readAccessToken,
@@ -58,6 +64,16 @@ export function CustomerAuthProvider({ children }: { children: ReactNode }) {
         return;
       }
 
+      if (isDemoAccessToken(token)) {
+        const demoUser = cached ?? DEMO_CUSTOMER_USER;
+        persistSession(token, demoUser);
+        if (!cancelled) {
+          setUser(demoUser);
+          setIsLoading(false);
+        }
+        return;
+      }
+
       try {
         const me = await fetchCurrentCustomer(token);
         if (!cancelled) {
@@ -79,6 +95,13 @@ export function CustomerAuthProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const login = useCallback(async (email: string, password: string) => {
+    if (matchesDemoLogin(email, password)) {
+      const session = createDemoSession();
+      persistSession(session.accessToken, session.user);
+      setUser(session.user);
+      return { ok: true as const };
+    }
+
     try {
       const session = await loginCustomer(email, password);
       persistSession(session.accessToken, session.user);
@@ -98,6 +121,19 @@ export function CustomerAuthProvider({ children }: { children: ReactNode }) {
       lastName: string;
       phone?: string;
     }) => {
+      if (matchesDemoLogin(input.email, input.password)) {
+        const session = createDemoSession();
+        const user: CustomerUser = {
+          ...session.user,
+          firstName: input.firstName || session.user.firstName,
+          lastName: input.lastName || session.user.lastName,
+          phone: input.phone || session.user.phone,
+        };
+        persistSession(session.accessToken, user);
+        setUser(user);
+        return { ok: true as const };
+      }
+
       try {
         const session = await registerCustomer(input);
         persistSession(session.accessToken, session.user);
@@ -113,7 +149,9 @@ export function CustomerAuthProvider({ children }: { children: ReactNode }) {
 
   const logout = useCallback(async () => {
     const token = readAccessToken();
-    await logoutCustomer(token);
+    if (!isDemoAccessToken(token)) {
+      await logoutCustomer(token);
+    }
     clearSession();
     setUser(null);
   }, []);

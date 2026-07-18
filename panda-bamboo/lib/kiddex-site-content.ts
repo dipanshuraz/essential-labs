@@ -1,4 +1,4 @@
-/** Copy and structure aligned with Kiddex/*.html theme pages. */
+/** Site-wide static copy (blog, about, contact, etc.). */
 
 export const MARQUEE_ITEMS = [
   "Toy Car",

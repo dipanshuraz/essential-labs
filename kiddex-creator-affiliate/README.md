@@ -21,17 +21,17 @@ Output: `dist/` with SPA fallbacks (`_redirects`, `404.html`) for client-side ro
 
 ## Deploy to Cloudflare Pages
 
+Production builds run from **`kiddex-console/`**, not this folder. See [**DEPLOY.md**](../DEPLOY.md) (Part 3).
+
 | Setting | Value |
 |---------|--------|
-| Root directory | `kiddex-apps/kiddex-creator-affiliate` |
-| Build command | `npm ci && npm run build` |
+| Root directory | `kiddex-console` |
+| Build command | `npm run build:creators` |
 | Build output | `dist` |
 
-Environment variables: see `.env.example`.
+Add `VITE_STOREFRONT_URL` (and optional `VITE_API_BASE_URL`) in Pages → Environment variables, then redeploy.
 
-```bash
-npm run deploy:pages
-```
+**CLI:** `npm run deploy:pages` from this folder (forwards to `kiddex-console`).
 
 ## Stack
 

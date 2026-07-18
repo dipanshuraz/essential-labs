@@ -69,10 +69,10 @@
 
 
 :root{
-  --theme-color: #F76188;
-  --secondary-color: #111111;
-  --text-color: #666666;
-  --title-color: #111111;
+  --theme-color: #6D8B74;
+  --secondary-color: #2E2E2B;
+  --text-color: #66635F;
+  --title-color: #2E2E2B;
   --text-font: "Nunito", sans-serif;
   --title-font: "Nunito", sans-serif;
 }
@@ -86,7 +86,7 @@ body {
   color: var(--text-color);
   line-height:28px;
   font-weight:400;
-  background:#ffffff;
+  background:#FAF7F2;
   font-family: var(--text-font);
   background-size:cover;
   background-repeat:no-repeat;
@@ -1314,7 +1314,7 @@ button.ltr {
   line-height: 20px;
   color: #fff;
   font-weight: 500;
-  background: #27D82E;
+  background: #C68B59;
   border-radius: 30px;
   padding: 2px 12px;
   z-index: 1;
@@ -1860,7 +1860,7 @@ button.ltr {
   border-top: dashed;
   border-bottom: dashed;
   border-width: 1px;
-  background: #FFE8EE;
+  background: #F2ECE2;
 }
 
 .slide-text.style-three .text-inner .text-list li{
@@ -1909,7 +1909,7 @@ button.ltr {
   font-size: 14px;
   color: #fff;
   font-weight: 700;
-  background: #10CB23;
+  background: #C68B59;
   border: 1px dashed #fff;
   width: 50px;
   height: 50px;
@@ -1924,7 +1924,7 @@ button.ltr {
   font-size: 14px;
   color: #fff;
   font-weight: 700;
-  background: #FF0000;
+  background: #B96A5A;
   border: 1px dashed #fff;
   width: 50px;
   height: 50px;

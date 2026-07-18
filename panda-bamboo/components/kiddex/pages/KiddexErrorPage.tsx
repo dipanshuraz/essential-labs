@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { KiddexPageTitle } from "@/components/kiddex/layout/KiddexPageTitle";
+import { KiddexSubscribeSection } from "@/components/kiddex/sections/KiddexSubscribeSection";
 import { asset } from "@/lib/assets";
 
 export function KiddexErrorPage() {
@@ -18,6 +19,7 @@ export function KiddexErrorPage() {
           </div>
         </div>
       </section>
+      <KiddexSubscribeSection />
     </>
   );
 }

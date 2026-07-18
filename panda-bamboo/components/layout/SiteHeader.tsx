@@ -37,7 +37,7 @@ export function SiteHeader() {
           onSubmit={(e) => {
             e.preventDefault();
             const q = headerQ.trim();
-            router.push(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
+            router.push(q ? `/shop?q=${encodeURIComponent(q)}` : "/shop");
           }}
         >
           <Input

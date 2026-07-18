@@ -102,7 +102,7 @@
   border: none;
   height: 2px;  
   width: 100%;
-  background: rgba(247, 97, 136, 0.20);
+  background: rgba(109, 139, 116, 0.20);
   border-radius: 30px;
 }
 
@@ -308,7 +308,7 @@
 }
 
 .shop-sidebar .color-widget .color-list li:nth-child(3) .check-box label:before{
-  background: #FF6B00;
+  background: #C68B59;
 }
 
 .shop-sidebar .color-widget .color-list li:nth-child(4) .check-box label:before{
@@ -324,7 +324,7 @@
 }
 
 .shop-sidebar .color-widget .color-list li:nth-child(7) .check-box label:before{
-  background: #FF0000;
+  background: #B96A5A;
 }
 
 .shop-sidebar .color-widget .color-list li:nth-child(8) .check-box label:before{
@@ -360,7 +360,7 @@
 }
 
 .shop-sidebar .color-widget .color-list li:nth-child(16) .check-box label:before{
-  background: #FF6B00;
+  background: #C68B59;
 }
 
 .shop-sidebar .review-widget .category-list li label i{

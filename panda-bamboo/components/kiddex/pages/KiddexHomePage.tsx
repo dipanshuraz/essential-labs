@@ -1,141 +1,181 @@
 "use client";
 
-import Link from "next/link";
-import { KiddexProductCard } from "@/components/kiddex/shop/KiddexProductCard";
-import { asset } from "@/lib/assets";
-import { categories, formatPrice, products } from "@/lib/catalog";
-
-const SHAPES = [
-  "shape/shape-11.png",
-  "shape/shape-12.png",
-  "shape/shape-13.png",
-  "shape/shape-14.png",
-  "shape/shape-15.png",
-  "shape/shape-16.png",
-];
-
-const FEATURED = [
-  { eyebrow: "Featured", title: "Newborn", from: "₹499", image: "resource/feature-1.png" },
-  { eyebrow: "Hot Sale", title: "Girls Wear", from: "₹899", image: "resource/feature-2.png" },
-  { eyebrow: "Latest Deals", title: "Footwear", from: "₹1,599", image: "resource/feature-3.png" },
-];
+import { BannerSection } from "@/components/kiddex/sections/home/BannerSection";
+import { BannerStyleFiveSection } from "@/components/kiddex/sections/home/BannerStyleFiveSection";
+import { BannerStyleFourSection } from "@/components/kiddex/sections/home/BannerStyleFourSection";
+import { BannerStyleThreeSection } from "@/components/kiddex/sections/home/BannerStyleThreeSection";
+import { BannerStyleTwoSection } from "@/components/kiddex/sections/home/BannerStyleTwoSection";
+import { BrandsLogoSection } from "@/components/kiddex/sections/home/BrandsLogoSection";
+import { CategorySection } from "@/components/kiddex/sections/home/CategorySection";
+import { CategoryStyleTwoSection } from "@/components/kiddex/sections/home/CategoryStyleTwoSection";
+import { CollectionSection } from "@/components/kiddex/sections/home/CollectionSection";
+import { DealsSection } from "@/components/kiddex/sections/home/DealsSection";
+import { DealsStyleTwoSection } from "@/components/kiddex/sections/home/DealsStyleTwoSection";
+import { FeaturedSection } from "@/components/kiddex/sections/home/FeaturedSection";
+import { FeaturedStyleThreeSection } from "@/components/kiddex/sections/home/FeaturedStyleThreeSection";
+import { FeaturedStyleTwoSection } from "@/components/kiddex/sections/home/FeaturedStyleTwoSection";
+import { HomeProductCarouselSection } from "@/components/kiddex/sections/home/HomeProductCarouselSection";
+import { HomeShopPreviewSection } from "@/components/kiddex/sections/home/HomeShopPreviewSection";
+import { HomeShopWithAdsSection } from "@/components/kiddex/sections/home/HomeShopWithAdsSection";
+import { HomeTestimonialSection } from "@/components/kiddex/sections/home/HomeTestimonialSection";
+import { PopularProductsSection } from "@/components/kiddex/sections/home/PopularProductsSection";
+import { KiddexCtaBandSection } from "@/components/kiddex/sections/shared/KiddexCtaBandSection";
+import { KiddexHighlightsStrip } from "@/components/kiddex/sections/KiddexHighlightsStrip";
+import { KiddexNewsSection } from "@/components/kiddex/sections/KiddexNewsSection";
+import { KiddexSlideText } from "@/components/kiddex/sections/KiddexSlideText";
+import { KiddexSubscribeSection } from "@/components/kiddex/sections/KiddexSubscribeSection";
+import { formatPrice, products } from "@/lib/catalog";
+import { SHOP_ADS_BLOCKS } from "@/lib/kiddex-home-content";
+import { ABOUT_NEWS } from "@/lib/kiddex-site-content";
 
 type Props = { variant?: number };
 
 export function KiddexHomePage({ variant = 1 }: Props) {
+  const priceLabel = products[0] ? formatPrice(products[0].price) : "$42.99";
   const popular = products.slice(0, 8);
-  const heroTitle =
-    variant === 2
-      ? "Playtime Starts Here — Kidswear Kids Love"
-      : variant === 3
-        ? "Discover Joy in Every Outfit"
-        : variant === 4
-          ? "Premium Kids Store — Shop Smarter"
-          : variant === 5
-            ? "Your Neighborhood Kidswear Destination"
-            : "The Best Kidswear Store in the City";
+  const carousel = products.slice(0, 4);
+  const preview = products.slice(0, 4);
+  const adsA = SHOP_ADS_BLOCKS[0];
+  const adsB = SHOP_ADS_BLOCKS[1];
 
-  const heroPrice = products[0] ? formatPrice(products[0].price) : "₹499";
+  if (variant === 1) {
+    return (
+      <>
+        <BannerSection
+          title="The Best Kids Toy Store in the City"
+          priceLabel={priceLabel}
+          decorated
+        />
+        <CategorySection />
+        <FeaturedSection />
+        <PopularProductsSection products={popular} />
+        <DealsSection />
+        <HomeShopPreviewSection products={preview} />
+        <FeaturedStyleTwoSection />
+        <CollectionSection products={products} />
+        <HomeTestimonialSection />
+        <KiddexNewsSection posts={ABOUT_NEWS} />
+      </>
+    );
+  }
+
+  if (variant === 2) {
+    return (
+      <>
+        <BannerStyleTwoSection />
+        <KiddexHighlightsStrip className="highlights-section pt_30" />
+        <CategoryStyleTwoSection />
+        <HomeShopWithAdsSection products={carousel} {...adsA} />
+        <BrandsLogoSection />
+        <HomeProductCarouselSection
+          products={carousel}
+          sectionClass="shop-section pt_120 pb_90"
+          title={
+            <>
+              New <span>Arrivals</span>
+            </>
+          }
+        />
+        <HomeProductCarouselSection
+          products={popular}
+          sectionClass="shop-section shop-style-three pt_120 pb_110"
+          pattern="shape/shape-49.png"
+          title={
+            <>
+              Trending <span>Products</span>
+            </>
+          }
+        />
+        <FeaturedStyleThreeSection />
+        <DealsStyleTwoSection />
+        <HomeShopWithAdsSection products={carousel} {...adsB} />
+        <KiddexCtaBandSection />
+        <KiddexNewsSection posts={ABOUT_NEWS} />
+      </>
+    );
+  }
+
+  if (variant === 3) {
+    return (
+      <>
+        <BannerStyleThreeSection />
+        <KiddexSlideText variant="three" />
+        <CategorySection />
+        <DealsSection />
+        <KiddexHighlightsStrip className="highlights-style-two pb_100" />
+        <HomeProductCarouselSection
+          products={popular}
+          sectionClass="shop-section shop-style-five pt_120 pb_90"
+          title={
+            <>
+              Best <span>Sellers</span>
+            </>
+          }
+        />
+        <BrandsLogoSection sectionClass="brands-style-two centred pb_90" />
+        <FeaturedSection />
+        <HomeShopPreviewSection products={preview} />
+        <KiddexCtaBandSection title="Grab the Best Deals Today" />
+        <HomeTestimonialSection />
+        <KiddexNewsSection posts={ABOUT_NEWS} />
+      </>
+    );
+  }
+
+  if (variant === 4) {
+    return (
+      <>
+        <BannerStyleFourSection />
+        <KiddexHighlightsStrip className="highlights-style-two pb_100" />
+        <HomeProductCarouselSection
+          products={carousel}
+          sectionClass="shop-section shop-style-three pt_120 pb_90"
+          title={
+            <>
+              Top <span>Picks</span>
+            </>
+          }
+        />
+        <FeaturedStyleTwoSection />
+        <CategorySection />
+        <CollectionSection products={products} />
+        <KiddexCtaBandSection />
+        <BrandsLogoSection />
+        <PopularProductsSection products={popular} />
+        <HomeTestimonialSection />
+        <KiddexNewsSection posts={ABOUT_NEWS} />
+      </>
+    );
+  }
 
   return (
     <>
-      <section className="banner-section">
-        <div className="pattern-layer" style={{ backgroundImage: `url(${asset("shape/shape-21.png")})` }} />
-        <div className="large-container">
-          <div className="row align-items-center">
-            <div className="col-lg-6 col-md-12 col-sm-12 image-column">
-              <div className="image-box">
-                <figure className="image">
-                  <img src={asset("banner/banner-img-1.png")} alt="" />
-                </figure>
-              </div>
-            </div>
-            <div className="col-lg-6 col-md-12 col-sm-12 content-column">
-              <div className="content-box">
-                <h2>{heroTitle}</h2>
-                <h3>
-                  From <span>{heroPrice}</span>
-                </h3>
-                <div className="btn-box">
-                  <Link href="/shop" className="theme-btn btn-one">
-                    View Shop
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="category-section centred pt_120 pb_85">
-        <div className="large-container">
-          <div className="row clearfix">
-            {categories.map((c, i) => (
-              <div key={c.name} className="col-lg-2 col-md-4 col-sm-6 col-12">
-                <div className="category-block-one">
-                  <div className="inner-box">
-                    <div className="image-box">
-                      <div
-                        className="shape"
-                        style={{ backgroundImage: `url(${asset(SHAPES[i % SHAPES.length])})` }}
-                      />
-                      <figure className="image">
-                        <img src={asset(c.image)} alt={c.name} />
-                      </figure>
-                    </div>
-                    <h4>
-                      <Link href={`/shop?category=${encodeURIComponent(c.name)}`}>{c.name}</Link>
-                    </h4>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="featured-section pb_80">
-        <div className="large-container">
-          <div className="row clearfix">
-            {FEATURED.map((f) => (
-              <div key={f.title} className="col-lg-4 col-md-6 col-sm-12 featured-block">
-                <div className="featured-block-one">
-                  <div className="inner-box clearfix">
-                    <figure className="image-box p_absolute t_0 r_0">
-                      <img src={asset(f.image)} alt="" />
-                    </figure>
-                    <div className="text-box">
-                      <h6>{f.eyebrow}</h6>
-                      <h2>{f.title}</h2>
-                      <h4>
-                        From <span>{f.from}</span>
-                      </h4>
-                      <Link href="/shop" className="theme-btn btn-one">
-                        Shop now
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="popular-product pb_120 centred">
-        <div className="large-container">
-          <div className="sec-title mb_50">
-            <h2>
-              Today&apos;s <span>popular picks</span>
-            </h2>
-          </div>
-          <div className="inner-container clearfix">
-            {popular.map((p) => (
-              <KiddexProductCard key={p.id} product={p} />
-            ))}
-          </div>
-        </div>
-      </section>
+      <BannerStyleFiveSection />
+      <HomeProductCarouselSection
+        products={popular}
+        sectionClass="shop-style-nine pt_110 pb_90"
+        title={
+          <>
+            Top <span>Selling Books</span>
+          </>
+        }
+        centred
+      />
+      <FeaturedSection />
+      <CategoryStyleTwoSection />
+      <HomeShopPreviewSection products={preview} />
+      <KiddexHighlightsStrip className="highlights-section pt_30" />
+      <PopularProductsSection
+        products={popular}
+        title={
+          <>
+            Featured <span>Books</span>
+          </>
+        }
+      />
+      <DealsSection />
+      <KiddexNewsSection posts={ABOUT_NEWS} />
+      <KiddexSubscribeSection />
     </>
   );
 }

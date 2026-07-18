@@ -6,12 +6,12 @@ Self-contained workspace for the Kiddex product surface: storefront, operations 
 
 | Folder | Role | Stack | Dev URL |
 |--------|------|--------|---------|
-| [`panda-bamboo/`](panda-bamboo/) | Customer storefront — Kiddex HTML template (CSS + jQuery) served via Next.js rewrites | Next.js 15, React 19 | http://localhost:3000 |
+| [`panda-bamboo/`](panda-bamboo/) | Customer storefront — Kiddex theme as React components (`components/kiddex/`) + static assets | Next.js 15, React 19 | http://localhost:3000 |
 | [`essential-labs-admin/`](essential-labs-admin/) | Merchant admin dashboard (orders, catalog, customers) | Vite 6, React 19, React Router 7 | http://localhost:5173 |
 | [`kiddex-creator-affiliate/`](kiddex-creator-affiliate/) | Creator / affiliate hub (“Trakr” — marketplace, payouts, reports) | Vite 6, React 19, TanStack Query, Zustand | http://localhost:5174 |
 | [`kiddex-gateway/`](kiddex-gateway/) | API gateway / BFF stub (health, readiness, recommendations placeholder) | Node, Express | http://localhost:4000 |
 
-Each app has its own `package.json` and `node_modules`. The repo root only adds [`concurrently`](https://www.npmjs.com/package/concurrently) to run the three frontends together.
+The repo root adds [`concurrently`](https://www.npmjs.com/package/concurrently) to run frontends together. **Admin and affiliate** share [`kiddex-console/`](kiddex-console/) as the Vite build host (see [DEPLOY.md](DEPLOY.md)); install `kiddex-console` for production builds and Cloudflare deploys.
 
 ## Prerequisites
 
@@ -25,6 +25,12 @@ From `kiddex-apps`:
 ```bash
 npm install                    # root dev runner (concurrently)
 npm install --prefix panda-bamboo
+npm install --prefix kiddex-console   # required for admin + affiliate build/deploy
+```
+
+Optional (only if running `npm run dev` from app folders directly):
+
+```bash
 npm install --prefix essential-labs-admin
 npm install --prefix kiddex-creator-affiliate
 ```
@@ -82,18 +88,21 @@ Vite apps output `dist/` for static hosting. Panda Bamboo: `npm run build --pref
 
 ## Environment variables
 
-| Variable | Used by | Default |
-|----------|---------|---------|
-| `VITE_STOREFRONT_URL` | Admin, Creator hub | `http://localhost:3000` |
-| `VITE_API_BASE_URL` | Admin, Creator hub (when wired) | — |
-| `PORT` | `kiddex-gateway` | `4000` |
+| Variable | Used by | Local default | Production |
+|----------|---------|---------------|------------|
+| `VITE_STOREFRONT_URL` | Admin, Creator hub | `http://localhost:3000` | Set on Cloudflare Pages |
+| `VITE_API_BASE_URL` | Admin, Creator hub | — | Set on Cloudflare Pages |
+| `NEXT_PUBLIC_GATEWAY_URL` | Panda Bamboo | `http://localhost:4000` | Set on Vercel |
+| `PORT` | `kiddex-gateway` | `4000` | Railway / Render |
+
+Details: [DEPLOY.md — Part 5](DEPLOY.md#part-5--local-vs-production-environments).
 
 ## Panda Bamboo (storefront) notes
 
-- Static HTML lives under `panda-bamboo/public/kiddex/`.
-- Next.js rewrites `/` → `/kiddex/index.html` and root `/*.html` → `/kiddex/*.html`.
-- After changing HTML, run `npm run fix-kiddex-base --prefix panda-bamboo` so `<base href="/kiddex/">` stays correct.
-- Route smoke check: `npm run verify:kiddex --prefix panda-bamboo` (expects `next start` on `PORT`, default 3000).
+- Storefront UI is **React** under `panda-bamboo/components/kiddex/` with routes in `app/(store)/`.
+- Theme **CSS/JS/images** are committed under `panda-bamboo/public/kiddex/assets/`.
+- Legacy `*.html` URLs redirect to clean routes (e.g. `/about.html` → `/about`).
+- Route list: `panda-bamboo/lib/kiddex-routes.ts`.
 
 ## Creator hub
 
@@ -104,7 +113,7 @@ Vite apps output `dist/` for static hosting. Panda Bamboo: `npm run build --pref
 
 See [`kiddex-gateway/README.md`](kiddex-gateway/README.md). Endpoints: `GET /health`, `GET /v1/ready`, `GET /v1/recommendations?productId=…`.
 
-Deploy the gateway on **Railway** or **Render** (set root directory to `kiddex-apps/kiddex-gateway`, health check `/health`). See the gateway README for env vars and `VITE_API_BASE_URL` wiring.
+Deploy the gateway on **Railway** or **Render** (root directory `kiddex-gateway`, health check `/health`). See the gateway README for env vars and `VITE_API_BASE_URL` wiring.
 
 ## Further reading
 

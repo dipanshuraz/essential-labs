@@ -48,7 +48,7 @@
 }
 
 .brands-block-one:nth-child(even) a{
-  background: #FFE8EE;
+  background: #F2ECE2;
 }
 
 .brands-section .pattern-layer .pattern-1{
@@ -74,7 +74,7 @@
 
 .brands-style-two{
   position: relative;
-  background: #F9F8E8;
+  background: #F2ECE2;
 }
 
 .brands-style-two .pattern-layer .pattern-1{
@@ -111,7 +111,7 @@
 }
 
 .brands-block-two .inner-box:hover{
-  box-shadow: 0px 30px 50px 0px rgba(247, 97, 136, 0.08);
+  box-shadow: 0px 30px 50px 0px rgba(109, 139, 116, 0.08);
 }
 
 .brands-block-two .inner-box .logo-box{

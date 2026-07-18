@@ -1,28 +1,17 @@
-import manifest from "./kiddex-manifest.json";
+import { KIDDEX_DYNAMIC_SLUGS, KIDDEX_ROUTE_ENTRIES, type KiddexRouteSlug } from "./kiddex-routes";
 
 export type KiddexManifestEntry = {
-  html: string;
-  slug: string;
+  slug: KiddexRouteSlug;
   route: string;
 };
 
-export const KIDDEX_PAGES = manifest as KiddexManifestEntry[];
+export const KIDDEX_PAGES: KiddexManifestEntry[] = KIDDEX_ROUTE_ENTRIES.map(({ slug, route }) => ({
+  slug,
+  route,
+}));
 
-/** Slugs with a dedicated `app/(store)/<slug>/page.tsx` — exclude from `[slug]` catch-all. */
-export const RESERVED_STORE_SLUGS = [
-  "login",
-  "signup",
-  "account",
-  "shop",
-  "search",
-  "shop-details",
-  "cart",
-  "checkout",
-] as const;
-
-export const KIDDEX_SLUGS = KIDDEX_PAGES.filter(
-  (p) => p.route !== "/" && !RESERVED_STORE_SLUGS.includes(p.slug as (typeof RESERVED_STORE_SLUGS)[number]),
-).map((p) => p.slug);
+/** All slugs handled by the `[slug]` catch-all route. */
+export const KIDDEX_SLUGS = [...KIDDEX_DYNAMIC_SLUGS];
 
 export function getKiddexEntryBySlug(slug: string): KiddexManifestEntry | undefined {
   return KIDDEX_PAGES.find((p) => p.slug === slug);

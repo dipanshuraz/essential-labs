@@ -50,7 +50,7 @@
   line-height: 30px;
   font-weight: 500;
   color: var(--title-color);
-  background: #FFF6F8;
+  background: #F2ECE2;
   padding: 20px 50px;
   cursor: pointer;
   transition: all 500ms ease;
@@ -100,7 +100,7 @@
   width: 40px;
   height: 40px;
   line-height: 42px;
-  background: #FFF6F8;
+  background: #F2ECE2;
   text-align: center;
   border-radius: 50%;
   font-size: 16px;

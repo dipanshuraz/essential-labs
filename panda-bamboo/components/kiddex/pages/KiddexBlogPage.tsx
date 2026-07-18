@@ -2,6 +2,7 @@ import { KiddexPageTitle } from "@/components/kiddex/layout/KiddexPageTitle";
 import { KiddexBlogCta } from "@/components/kiddex/sections/KiddexBlogCta";
 import { KiddexBlogPostCard } from "@/components/kiddex/sections/KiddexBlogPostCard";
 import { KiddexBlogSidebar } from "@/components/kiddex/sections/KiddexBlogSidebar";
+import { KiddexSubscribeSection } from "@/components/kiddex/sections/KiddexSubscribeSection";
 import { BLOG_GRID_POSTS, BLOG_STANDARD_POSTS } from "@/lib/kiddex-site-content";
 
 type Props = { layout?: "grid" | "standard" };
@@ -63,6 +64,7 @@ export function KiddexBlogPage({ layout = "grid" }: Props) {
           </div>
         </div>
       </section>
+      <KiddexSubscribeSection />
     </>
   );
 }

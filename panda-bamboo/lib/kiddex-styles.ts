@@ -52,4 +52,11 @@ export const KIDDEX_MODULE_STYLES = [
   `${BASE}/responsive.css`,
 ] as const;
 
-export const KIDDEX_STYLES = [...KIDDEX_CORE_STYLES, ...KIDDEX_MODULE_STYLES] as const;
+/** Project overrides — must load LAST to win the cascade. */
+export const KIDDEX_OVERRIDE_STYLES = [`${BASE}/kiddex-overrides.css`] as const;
+
+export const KIDDEX_STYLES = [
+  ...KIDDEX_CORE_STYLES,
+  ...KIDDEX_MODULE_STYLES,
+  ...KIDDEX_OVERRIDE_STYLES,
+] as const;

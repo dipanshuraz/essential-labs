@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { useShop } from "@/components/shop/ShopProvider";
 import { asset } from "@/lib/assets";
-import { mainNav } from "@/lib/navigation";
+import { KiddexMainNav } from "@/components/kiddex/layout/KiddexMainNav";
 
 function HeaderSearch({ action = "/" }: { action?: string }) {
   const router = useRouter();
@@ -15,7 +15,7 @@ function HeaderSearch({ action = "/" }: { action?: string }) {
   function onSubmit(e: FormEvent) {
     e.preventDefault();
     const query = q.trim();
-    router.push(query ? `/search?q=${encodeURIComponent(query)}` : "/search");
+    router.push(query ? `/shop?q=${encodeURIComponent(query)}` : "/shop");
   }
 
   return (
@@ -50,7 +50,7 @@ function HeaderOptions() {
         <span className="line line3" />
       </li>
       <li>
-        <Link href="/account/wishlist" aria-label="Wishlist">
+        <Link href="/wishlist" aria-label="Wishlist">
           <i className="far fa-heart" />
           {wishlistIds.length > 0 ? <span className="kiddex-badge">{wishlistIds.length}</span> : null}
         </Link>
@@ -123,22 +123,7 @@ export function KiddexHeader() {
               </div>
               <nav className="main-menu navbar-expand-md navbar-light clearfix">
                 <div className="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                  <ul className="navigation clearfix">
-                    {mainNav.map((item) => (
-                      <li key={item.label} className={item.children ? "dropdown" : undefined}>
-                        {item.href ? <Link href={item.href}>{item.label}</Link> : <span>{item.label}</span>}
-                        {item.children ? (
-                          <ul>
-                            {item.children.map((child) => (
-                              <li key={child.href}>
-                                <Link href={child.href}>{child.label}</Link>
-                              </li>
-                            ))}
-                          </ul>
-                        ) : null}
-                      </li>
-                    ))}
-                  </ul>
+                  <KiddexMainNav />
                 </div>
               </nav>
             </div>

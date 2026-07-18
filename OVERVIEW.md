@@ -129,7 +129,7 @@ npm run install:gateway
 | `npm run dev` | `next dev --turbopack` (port 3000) |
 | `npm run build` / `start` | Production Next.js |
 | `npm run test:e2e` | Playwright tests |
-| `npm run sync-kiddex-assets` | Sync assets from source template |
+| `npm run verify:kiddex` | Check routes, assets, and React storefront wiring |
 
 ### Deploy
 

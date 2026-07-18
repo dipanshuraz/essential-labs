@@ -1,9 +1,11 @@
 import { HIGHLIGHTS_STRIP } from "@/lib/kiddex-site-content";
 import { asset } from "@/lib/assets";
 
-export function KiddexHighlightsStrip() {
+type Props = { className?: string };
+
+export function KiddexHighlightsStrip({ className = "highlights-section pt_0" }: Props) {
   return (
-    <section className="highlights-section pt_0">
+    <section className={className}>
       <div className="large-container">
         <div className="inner-container">
           <ul className="list-item clearfix">

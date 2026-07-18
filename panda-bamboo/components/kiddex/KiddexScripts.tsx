@@ -21,7 +21,11 @@ const SCRIPTS = [
   `${JS}/countdown.js`,
   `${JS}/jquery-ui.js`,
   `${JS}/jquery.bootstrap-touchspin.js`,
+  `${JS}/product-filter.js`,
+  `${JS}/jquery.lettering.min.js`,
+  `${JS}/jquery.circleType.js`,
   `${JS}/odometer.js`,
+  `${JS}/bxslider.js`,
   `${JS}/script.js`,
 ] as const;
 

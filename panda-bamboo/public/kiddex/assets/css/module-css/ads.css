@@ -3,7 +3,7 @@
 
 .ads-section{
   position: relative;
-  background: #E2D1FF;
+  background: #F2ECE2;
 }
 
 .ads-section .content-box{
@@ -42,7 +42,7 @@
 }
 
 .ads-section .content-box h3 span{
-  color: #FF0000;
+  color: #C68B59;
 }
 
 .ads-section .pattern-layer{
