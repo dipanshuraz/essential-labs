@@ -16,9 +16,12 @@
     "deploy:admin:pages": "npm run deploy:admin --prefix kiddex-console",
     "deploy:creators:pages": "npm run deploy:creators --prefix kiddex-console",
     "dev:gateway": "npm run dev --prefix kiddex-gateway",
-    "install:gateway": "npm install --prefix kiddex-gateway"
+    "install:gateway": "npm install --prefix kiddex-gateway",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler dev"
   },
   "devDependencies": {
-    "concurrently": "^9.1.2"
+    "concurrently": "^9.1.2",
+    "wrangler": "^4.92.0"
   }
 }
